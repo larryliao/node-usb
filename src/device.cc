@@ -56,6 +56,8 @@ static NAN_METHOD(deviceConstructor) {
 		NanNew<Uint32>((uint32_t) libusb_get_bus_number(self->device)), CONST_PROP);
 	args.This()->Set(V8SYM("deviceAddress"),
 		NanNew<Uint32>((uint32_t) libusb_get_device_address(self->device)), CONST_PROP);
+	args.This()->Set(V8SYM("portNumber"),
+        	NanNew<Uint32>((uint32_t) libusb_get_port_number(self->device)), CONST_PROP);
 
 	Local<Object> v8dd = NanNew<Object>();
 	args.This()->Set(V8SYM("deviceDescriptor"), v8dd, CONST_PROP);
